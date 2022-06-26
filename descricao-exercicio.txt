@@ -1,0 +1,52 @@
+
+PROBLEMA EXEMPLO
+
+Fazer um programa para ler os dados de uma reserva de hotel(numero quarto, data entrada,
+data saida) e mostrar os dados da resserva, inclusive sua duração em dias. 
+Em seguida, ler novas datas de entrada e saida, atualizar a reserva, mostrar novamente a reserva
+ com o os dados atualizados.
+O ´programa não deve aceitar dados inválidos para a reserva, conforme as regras abaixo:
+
+REGRA DE NEGÓCIO
+- alterações de reserva só podem ocorrer para datas futuras a data de hoje.
+- a data de saída deve ser maior q a data de entrada
+
+A UML ESTÁ ASSIM:
+
+Classe Reservation  
+propriedades  quarto: Integer
+entrada : Date
+saida : Date
+
+métodos
+ Duracao(): retorno integer
+ updateDatas(entrada Date,saida Date): void (sem retorno)
+ 
+ 
+ CRIARMOS UM RESOURCE NO GIT exceptions1-java
+ 
+ NA PASTA DO PROJETO, ENTRAMOS NO GIT SHELL
+ -comandos:
+ git init
+ git remote add origin git@github.com:cfcarmem/exceptions1-java.git
+  git pull origin main
+  (senha)
+  
+  e pronto, associei o meu projeto no gethub
+  
+  - commit no git status
+  - git push -u oring main (ou master)
+  
+  
+  exception muito ruim 
+  - quando a validação está no programa (main)
+  e não na reserva.
+  
+ 
+ 
+ --para melhorar a validação, delegamos para a classe Hotel
+ 
+ 
+ 
+ 
+ 

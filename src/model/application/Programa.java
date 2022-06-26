@@ -32,6 +32,7 @@ public class Programa {
 			System.out.print("Check-out date (dd/mm/yyyy): " );
 			Date vfim = sdf.parse(sc.nextLine());
 			
+			
 			if(vinicio.after(vfim)) {
 				System.out.println("A data inicial deve ser menor do que a data final.");
 			}else {
@@ -48,21 +49,15 @@ public class Programa {
 				
 				System.out.print("Check-out date (dd/mm/yyyy): " );
 				vfim = sdf.parse(sc.nextLine());
-				 Date agora = new Date();
-				 if(vinicio.before(agora)|| vfim.before(agora)) {
-					 System.out.println("Erro na reserva. Deve ser datas futuras");
-				 }else {
-					 if(vfim.before(vinicio)) {
-						 System.out.println("A data final deve ser maior que a inicial");
-					 }
-				 }
 				
-			    h.updateDates(vinicio, vfim);
-			    System.out.println(h.dadosReserva());
-			    
+				String valida = h.updateDates(vinicio, vfim);
+				if(valida == null) {
+					  h.updateDates(vinicio, vfim);
+					  System.out.println(h.dadosReserva());
+				}else {
+					System.out.println(valida);
+				}
 			}
-			
-			
 		}
 		catch(Exception e) {
 			System.err.println(e.getMessage());

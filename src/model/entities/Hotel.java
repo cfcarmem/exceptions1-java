@@ -66,19 +66,17 @@ public class Hotel {
 		//return periodo/(1000*60*60*24);//calculo de dias 
 	}
 	
-	public void updateDates(Date inicio, Date fim) {
+	public String updateDates(Date inicio, Date fim) {
+		Date agora = new Date();
+		 if(inicio.before(agora)|| fim.before(agora)) {
+			return "Erro na reserva. Deve ser datas futuras";
+		 }
+		if(fim.before(inicio)) {
+			return "A data final deve ser maior que a inicial";
+		}
 		this.inicio = inicio;
 		this.fim = fim;
-	}
-	
-	public void validaDatas() {
-		Date atual = new Date();
-		if( (this.inicio).before(atual)) {
-			 System.out.print("Verifique se a data informada é menor do que a data Atual"); 
-		}
-		else if(this.inicio.after(this.fim)) {
-			System.out.print("Data inicial não pode ser maior do que a final"); 
-		}
+		return null;
 	}
 	
 	
