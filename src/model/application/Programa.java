@@ -1,5 +1,4 @@
 package model.application;
-//solucção muito ruim de validação
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,6 +9,7 @@ import java.util.Scanner;
 import model.entities.Hotel;
 import model.exceptions.DomainException;
 
+//vou alterar no git dev_carmem
 
 public class Programa {
 
