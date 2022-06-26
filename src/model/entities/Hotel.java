@@ -4,31 +4,34 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import model.exceptions.DomainException;
+
 public class Hotel {
 	private Integer quarto;
 	private Date inicio;
 	private Date fim;
 	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	private static StringBuilder sb = new StringBuilder();
 	
 	public Hotel() {}
 
-	public Hotel(Integer quarto, Date inicio, Date fim) {
-		super();
+	public Hotel(Integer quarto, Date inicio, Date fim) throws DomainException {
+		 Date agora = new Date();
+		 if(inicio.before(agora)|| fim.before(agora)) {
+			throw new DomainException("Erro na reserva. Deve ser datas futuras");
+		 }
+		if(fim.before(inicio)) {
+			throw new DomainException( "A data final deve ser maior que a inicial");
+		}
 		this.quarto = quarto;
 		this.inicio = inicio;
 		this.fim = fim;
 	}
-	
-
 	/**
 	 * @return the quarto
 	 */
 	public Integer getQuarto() {
 		return quarto;
 	}
-
-
 
 	/**
 	 * @param quarto the quarto to set
@@ -66,7 +69,8 @@ public class Hotel {
 		//return periodo/(1000*60*60*24);//calculo de dias 
 	}
 	
-	public String updateDates(Date inicio, Date fim) {
+	
+	public String updateDates_Retorno_String(Date inicio, Date fim) {
 		Date agora = new Date();
 		 if(inicio.before(agora)|| fim.before(agora)) {
 			return "Erro na reserva. Deve ser datas futuras";
@@ -79,6 +83,18 @@ public class Hotel {
 		return null;
 	}
 	
+	//o metodo update lança a exceção e propaga ou seja, não é aqui que vai ser tratada
+	public void updateDates(Date inicio, Date fim) throws DomainException {
+		Date agora = new Date();
+		 if(inicio.before(agora)|| fim.before(agora)) {
+			throw new DomainException("Erro na reserva. Deve ser datas futuras");
+		 }
+		if(fim.before(inicio)) {
+			throw new DomainException( "A data final deve ser maior que a inicial");
+		}
+		this.inicio = inicio;
+		this.fim = fim;
+	}
 	
 	public String dadosReserva() {
 		StringBuilder sb = new StringBuilder();
