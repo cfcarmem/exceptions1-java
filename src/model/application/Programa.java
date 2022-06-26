@@ -10,6 +10,7 @@ import java.util.Scanner;
 import model.entities.Hotel;
 import model.exceptions.DomainException;
 
+
 public class Programa {
 
 	public static void main(String[] args){
